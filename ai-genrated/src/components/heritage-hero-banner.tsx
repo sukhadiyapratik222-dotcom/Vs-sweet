@@ -1,0 +1,67 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export function HeritageHeroBanner() {
+  return (
+    <section className="relative w-full overflow-hidden bg-[#071330] shadow-2xl">
+      {/* Top Gujarati Royal Blue Bar with Traditional Crest */}
+      <div className="bg-[#0b1b4f] border-b border-[#dfb755]/30 py-2 px-4 flex items-center justify-center relative">
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center px-4 sm:px-8 pointer-events-none">
+          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#dfb755]/40 to-transparent" />
+        </div>
+
+        {/* Traditional Ornate Shield Crest */}
+        <div className="relative z-10 px-8 py-1 rounded-xl bg-[#0b2468] border border-[#dfb755]/60 text-center shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+          <p className="text-base sm:text-lg font-bold tracking-wider text-[#f5df9e] font-[family-name:var(--font-display)]">
+            સ્વીટ માર્ટ
+          </p>
+          <p className="text-[10px] uppercase tracking-widest text-[#dfb755]/90 font-semibold -mt-0.5">
+            Since 1976
+          </p>
+        </div>
+      </div>
+
+      {/* 3-Panel Heritage Craft Panorama with Centered Content */}
+      <div className="relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[24/9] w-full min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] flex items-center justify-center text-center overflow-hidden">
+        {/* The 3-panel Karigar Photography (Ghee Pour, Jalebi Frying, Silver Foil Katli) */}
+        <Image
+          src="/images/heritage-hero-banner.png"
+          alt="Tradition Preserved Since 1976 - Pure Desi Ghee, Zero Compromise"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+
+        {/* Subtle cinematic vignette for maximum legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/50 pointer-events-none" />
+
+        {/* Centered Typography & Action Buttons */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-5 sm:space-y-6">
+          <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.15] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            Tradition Preserved Since 1976 —
+            <br />
+            <span className="font-light italic text-[#fbf3db]">
+              Pure Desi Ghee, Zero Compromise
+            </span>
+          </h1>
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-5 pt-2">
+            <Link
+              href="/shop"
+              className="px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-[#e5b84c] hover:bg-[#f3cb69] text-slate-950 transition-all shadow-[0_4px_20px_rgba(229,184,76,0.35)] hover:scale-105 active:scale-95 duration-200"
+            >
+              Explore Heritage Menu
+            </Link>
+            <Link
+              href="/shop?category=gift-hampers"
+              className="px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-[#d8a838] hover:bg-[#eec157] text-slate-950 transition-all shadow-[0_4px_20px_rgba(216,168,56,0.35)] hover:scale-105 active:scale-95 duration-200"
+            >
+              Gift Hampers
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

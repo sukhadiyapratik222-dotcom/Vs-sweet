@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #fdfcfa;
+  --surface: #ffffff;
+  --royal-blue: #0b2f8a;
+  --royal-blue-dark: #071c54;
+  --royal-blue-light: #eef3ff;
+  --gold: #dfb755;
+  --gold-dark: #b89130;
+  --gold-soft: #fbf3db;
+  --text-main: #182230;
+  --text-muted: #5e6d82;
+  --border-light: rgba(11, 47, 138, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-main);
+  background-color: var(--canvas);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(223, 183, 85, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(11, 47, 138, 0.03) 0%, transparent 40%);
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dfb755, transparent);
+}
+
+/* Glassmorphic Effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Modern Clean Minimalist Card */
+.mithai-card {
+  background: #ffffff;
+  border: 1px solid rgba(11, 47, 138, 0.06);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -5px rgba(11, 47, 138, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mithai-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -5px rgba(11, 47, 138, 0.1), 0 8px 12px -2px rgba(223, 183, 85, 0.12);
+  border-color: rgba(223, 183, 85, 0.4);
+}
+
+/* Modern Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #0b2f8a 0%, #071c54 100%);
+  color: #ffffff;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #103bb0 0%, #0b2f8a 100%);
+  box-shadow: 0 8px 20px -4px rgba(11, 47, 138, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #e9cb72 0%, #dfb755 100%);
+  color: #1a1506;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f0d588 0%, #e2be62 100%);
+  box-shadow: 0 8px 20px -4px rgba(223, 183, 85, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Category Filter Pill */
+.category-pill {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: #ffffff;
+  border: 1px solid rgba(11, 47, 138, 0.08);
+  transition: all 0.2s ease;
+}
+
+.category-pill:hover,
+.category-pill.active {
+  color: #0b2f8a;
+  background: #f4f7fe;
+  border-color: #0b2f8a;
+  box-shadow: 0 2px 8px rgba(11, 47, 138, 0.08);
+}
+
+/* Form input styling */
+input, select, textarea {
+  background: #ffffff;
+  border: 1px solid rgba(11, 47, 138, 0.12);
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #0b2f8a;
+  box-shadow: 0 0 0 3px rgba(11, 47, 138, 0.12);
+}

@@ -1,0 +1,72 @@
+{
+  "heroPhotos": [
+    {
+      "id": "kaju-katli",
+      "name": "Kaju Katli",
+      "image": "/images/kaju-katli-showcase.jpg",
+      "category": "Mithai",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": "motichoor-ladoo",
+      "name": "Motichoor Ladoo",
+      "image": "/images/motichoor-showcase.jpg",
+      "category": "Mithai",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "nylon-khaman",
+      "name": "Nylon Khaman",
+      "image": "/images/khaman-showcase.jpg",
+      "category": "Farsan",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": "surati-khandvi",
+      "name": "Surati Khandvi",
+      "image": "/images/khandvi-showcase.jpg",
+      "category": "Farsan",
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": "festive-platter",
+      "name": "Shahi Platter",
+      "image": "/images/mithai-platter-showcase.jpg",
+      "category": "Festive",
+      "active": true,
+      "order": 5
+    }
+  ],
+  "heroSettings": {
+    "autoScroll": true,
+    "intervalSeconds": 4
+  },
+  "announcement": {
+    "enabled": false,
+    "badge": "DIWALI PRE-ORDERS OPEN",
+    "text": "Get 15% off pure ghee festive gift boxes with code FESTIVE15 • Same-day dispatch across Gujarat",
+    "linkText": "Order Hampers →",
+    "linkUrl": "/shop?category=hampers"
+  },
+  "storeInfo": {
+    "name": "Vardayini Sweet Mart",
+    "tagline": "Pure Ghee Gujarati Mithai & Live Morning Farsan",
+    "established": "1976",
+    "phone": "+91 98250 12345",
+    "whatsapp": "+91 98250 12345",
+    "email": "orders@vardayini.com",
+    "address": "Opp. Swaminarayan Temple, Station Road, Anand, Gujarat 388001",
+    "city": "Anand, Gujarat",
+    "hours": "7:00 AM – 10:30 PM (All 7 Days)"
+  },
+  "promotions": {
+    "couponCode": "FESTIVE15",
+    "discountPercent": 15,
+    "description": "Flat 15% discount on all orders above ₹999",
+    "isActive": false
+  }
+}

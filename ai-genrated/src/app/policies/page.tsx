@@ -1,0 +1,180 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { useState, Suspense } from "react";
+import Link from "next/link";
+
+const POLICIES = {
+  terms: {
+    title: "Terms & Conditions",
+    badge: "Customer Agreement",
+    content: [
+      {
+        heading: "1. Authentic Heritage Guarantee",
+        text: "All sweets and savouries from Vardayini Sweet Mart are prepared using 100% Shuddh Desi Ghee and traditional recipes dating back to 1976. Products are freshly made and inspected for premium purity before dispatch.",
+      },
+      {
+        heading: "2. Orders & Order Acceptance",
+        text: "Orders placed on our website or WhatsApp are subject to acceptance and stock availability. Same-day morning dispatch applies to orders placed before 1:00 PM across Gujarat.",
+      },
+      {
+        heading: "3. Pricing & Taxes",
+        text: "All prices quoted are in Indian Rupees (INR) and are inclusive of applicable GST. Delivery charges, if any, are clearly calculated at checkout based on delivery location.",
+      },
+    ],
+  },
+  privacy: {
+    title: "Privacy Policy",
+    badge: "Data Protection",
+    content: [
+      {
+        heading: "1. Information We Collect",
+        text: "We collect only essential details required to deliver your fresh mithai orders: your name, contact phone number, delivery address, and order preferences.",
+      },
+      {
+        heading: "2. No Third-Party Data Sharing",
+        text: "Your personal data is never sold, leased, or distributed to any third party. It is used strictly for order fulfillment, dispatch updates, and customer support.",
+      },
+      {
+        heading: "3. Secure Payments",
+        text: "All payment transactions through UPI or Cash on Delivery are encrypted and securely verified.",
+      },
+    ],
+  },
+  cancellation: {
+    title: "Cancellation Policy",
+    badge: "Order Changes",
+    content: [
+      {
+        heading: "1. Fresh Products Window",
+        text: "Because our sweets and farsan are made fresh each morning with pure cow ghee and no artificial preservatives, order cancellations can be made within 1 hour of placing the order.",
+      },
+      {
+        heading: "2. How to Cancel",
+        text: "To cancel an order, please contact our dispatch desk at +91 98250 19760 or via WhatsApp with your Order ID before the package is handed over to our delivery partners.",
+      },
+    ],
+  },
+  returns: {
+    title: "Returns Policy",
+    badge: "Fresh Food Guidelines",
+    content: [
+      {
+        heading: "1. Perishable Food Items",
+        text: "In accordance with FSSAI regulations, perishable food items (fresh mithai, live farsan, dairy-based sweets) cannot be returned once delivered and opened.",
+      },
+      {
+        heading: "2. Transit Damage & Issues",
+        text: "If your parcel arrives damaged or with broken packaging, please photograph the package and notify us within 6 hours of delivery for an immediate free replacement or credit voucher.",
+      },
+    ],
+  },
+  refund: {
+    title: "Refund Policy",
+    badge: "Customer Assurance",
+    content: [
+      {
+        heading: "1. Eligible Refunds",
+        text: "Refunds are processed promptly for cancelled orders (within policy window) or in the rare event of delivery non-fulfillment.",
+      },
+      {
+        heading: "2. Processing Timeline",
+        text: "Prepaid UPI or card refunds are credited directly back to the original source account within 3 to 5 business days.",
+      },
+    ],
+  },
+};
+
+type PolicyKey = keyof typeof POLICIES;
+
+function PoliciesContent() {
+  const searchParams = useSearchParams();
+  const initialTab = (searchParams.get("tab") as PolicyKey) || "terms";
+  const [activeKey, setActiveKey] = useState<PolicyKey>(
+    POLICIES[initialTab] ? initialTab : "terms"
+  );
+
+  const activePolicy = POLICIES[activeKey];
+
+  return (
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="text-center space-y-3 pb-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs text-[#0b2f8a] font-semibold hover:underline"
+        >
+          ← Back to Vardayini Sweets
+        </Link>
+        <h1 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl font-bold text-[#182230]">
+          Store Policies & Guarantees
+        </h1>
+        <p className="text-sm text-[#5e6d82] max-w-xl mx-auto">
+          Committed to 100% Shuddh Desi Ghee purity, transparent policies, and customer satisfaction since 1976.
+        </p>
+      </div>
+
+      {/* Policy Selector Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-2 pb-8 border-b border-[#0b2f8a]/10">
+        {(Object.keys(POLICIES) as PolicyKey[]).map((key) => {
+          const isSelected = activeKey === key;
+          return (
+            <button
+              key={key}
+              onClick={() => setActiveKey(key)}
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition ${
+                isSelected
+                  ? "bg-[#0b2f8a] text-white shadow"
+                  : "bg-white text-[#182230] border border-[#0b2f8a]/15 hover:bg-slate-50"
+              }`}
+            >
+              {POLICIES[key].title}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Policy Content Body */}
+      <div className="mt-8 rounded-3xl bg-white border border-[#0b2f8a]/10 p-6 sm:p-10 shadow-sm space-y-6">
+        <div className="flex items-center gap-3">
+          <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#dfb755]/20 text-[#b89130]">
+            {activePolicy.badge}
+          </span>
+          <h2 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[#0b2f8a]">
+            {activePolicy.title}
+          </h2>
+        </div>
+
+        <div className="space-y-6 pt-2">
+          {activePolicy.content.map((sec, i) => (
+            <div key={i} className="space-y-1.5 pb-4 border-b border-slate-100 last:border-b-0">
+              <h3 className="font-semibold text-[#182230] text-sm">{sec.heading}</h3>
+              <p className="text-xs sm:text-sm text-[#5e6d82] leading-relaxed">{sec.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#fbf3db]/60 border border-[#dfb755]/30">
+          <div>
+            <p className="text-xs font-bold text-[#b89130]">Need help with an existing order?</p>
+            <p className="text-xs text-[#5e6d82]">Our Mandvi & Alkapuri counters are open daily 8:00 AM – 10:30 PM</p>
+          </div>
+          <a
+            href="tel:+919825019760"
+            className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#0b2f8a] text-white hover:bg-[#1a44b5] transition"
+          >
+            Call Support: +91 98250 19760
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function PoliciesPage() {
+  return (
+    <Suspense fallback={<div className="p-12 text-center text-xs text-slate-400">Loading policy details...</div>}>
+      <PoliciesContent />
+    </Suspense>
+  );
+}
